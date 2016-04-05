@@ -3,25 +3,52 @@ layout: post
 comments: true
 html2canvas: true
 title:  "The Beginning"
-date:   2016-04-05 15:09:44 -0700
+date:   2016-04-05
 categories: update
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+This is the first post, mainly to test Jekyll and github pages. Also to test Disqus.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+Making a trie in python
+{% highlight python %}
+def make_trie(*words):
+     root = dict()
+     for word in words:
+         current_dict = root
+         for letter in word:
+             current_dict = current_dict.setdefault(letter, {})
+         current_dict[_end] = _end
+     return root
 
-Jekyll also offers powerful support for code snippets:
+def in_trie(trie, word):
+    current_dict = trie
+    for letter in word:
+        if letter in current_dict:
+            current_dict = current_dict[letter]
+        else:
+            return False
+    else:
+        if _end in current_dict:
+            return True
+        else:
+            return False
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+>>>make_trie('foo', 'bar', 'baz', 'barz')
+{'b': {'a': {'r': {'_end_': '_end_', 'z': {'_end_': '_end_'}}, 
+             'z': {'_end_': '_end_'}}}, 
+ 'f': {'o': {'o': {'_end_': '_end_'}}}}
+>>> in_trie(make_trie('foo', 'bar', 'baz', 'barz'), 'baz')
+True
+>>> in_trie(make_trie('foo', 'bar', 'baz', 'barz'), 'barz')
+True
+>>> in_trie(make_trie('foo', 'bar', 'baz', 'barz'), 'barzz')
+False
+>>> in_trie(make_trie('foo', 'bar', 'baz', 'barz'), 'bart')
+False
+>>> in_trie(make_trie('foo', 'bar', 'baz', 'barz'), 'ba')
+False
+
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+100% stolen from a [Stack Overflow post][overflow] and highly not recommended for interviews.
 
-[jekyll-docs]: http://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+[overflow]: http://stackoverflow.com/questions/11015320/how-to-create-a-trie-in-python
