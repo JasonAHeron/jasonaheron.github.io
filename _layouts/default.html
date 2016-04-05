@@ -14,6 +14,9 @@
     </div>
 
     {% include footer.html %}
+    {% if page.html2canvas %}
+    <script src="{{ "/js/html2canvas.js" | prepend: site.baseurl }}"></script>
+    {% endif %}
 
   </body>
 
