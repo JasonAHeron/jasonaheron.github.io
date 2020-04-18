@@ -1,18 +1,39 @@
----
-layout: default
----
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Heron</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper">
+					<section id="main">
+						<header>
+							<span class="avatar"><img src="images/avatar.jpg" alt="" /></span>
+							<h1>👋Jason Heron</h1>
+              <p>Software Engineer @ Google</p>
+              <p>I work on 🔥Firebase</p>
+						</header>
+						<footer>
+							<ul class="icons">
+								<li><a href="https://github.com/jasonaheron" class="icon brands fa-github">GitHub</a></li>
+								<li><a href="#" class="icon solid fa-envelope">Email</a></li>
+							</ul>
+						</footer>
+					</section>
+					<footer id="footer">
+					</footer>
+			</div>
 
-<div class="home">
-  <h1 class="page-heading">Posts</h1>
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+		<!-- Scripts -->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+	</body>
+</html>
